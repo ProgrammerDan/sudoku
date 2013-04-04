@@ -9,12 +9,8 @@ package com.programmerdan.euler;
  */
 public abstract class SudokuSolverMethod {
 
-	/**
-	 * Helper method that registers a method with the solver.
-	 */
-	protected static void register() {
-		SudokuSolver solver = SudokuSolver.getInstance();
-		solver.addMethod(this);
+	private SudokuSolverMethod() {
+		init();
 	}
 
 	/**
@@ -31,7 +27,15 @@ public abstract class SudokuSolverMethod {
 	 * Any class-specific setup should happen here.
 	 * Implementing classes should override this.
 	 */
-	private abstract void register();
+	protected abstract void setup();
+
+	/**
+	 * Helper method that registers a method with the solver.
+	 */
+	private void register() {
+		SudokuSolver solver = SudokuSolver.getInstance();
+		solver.addMethod(this);
+	}
 
 	/**
 	 * This is kept general, but a method should take in a puzzle

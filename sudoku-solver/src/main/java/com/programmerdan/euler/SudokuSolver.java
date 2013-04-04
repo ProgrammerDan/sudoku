@@ -23,7 +23,7 @@ public class SudokuSolver {
 	 *
 	 * @return	the {@link SudokuSolver} singleton.
 	 */
-	public static SudokuSolver getSolver() {
+	public static SudokuSolver getInstance() {
 		return instance;
 	}
 
@@ -66,7 +66,7 @@ public class SudokuSolver {
 	 */
 	public boolean solve(SudokuPuzzle puzzle) {
 		for (SudokuSolverMethod method : methods) {
-			methods.solve(puzzle);
+			method.solve(puzzle);
 
 			if (puzzle.isComplete()) {
 				return true;

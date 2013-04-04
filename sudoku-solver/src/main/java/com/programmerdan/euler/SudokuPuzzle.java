@@ -10,7 +10,7 @@ public class SudokuPuzzle {
 
 
 	public boolean isComplete() {
-
+		return true;
 	}
 
 }

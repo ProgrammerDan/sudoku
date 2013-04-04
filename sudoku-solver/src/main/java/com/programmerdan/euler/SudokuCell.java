@@ -98,7 +98,8 @@ public class SudokuCell {
 	 * @return	True if added as an option, false otherwise.
 	 */
 	public boolean addOption(Integer option) {
-		if (option != null && options > 0 && options <9 && !options.contains(option) ) {
+		if (option != null && option > 0 &&
+				option < 9 && !options.contains(option) ) {
 			return options.add(option);
 		}
 		return false;
@@ -128,7 +129,5 @@ public class SudokuCell {
 			}
 		}
 		return false;
-	}
-
 	}
 }
