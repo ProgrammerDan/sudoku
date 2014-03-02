@@ -1,0 +1,1 @@
+int s(int[][] s){int i=0,j,k=1;long[] f=new long[9];long r=0L,c=r,g=r,z=45L,q=r;for(f[0]=1L;k<9;){f[k]=f[k-1]*49;z+=f[k++]*45;}for(;i<9;i++){for(j=0;j<9;){k=s[i][j];r+=k*f[i];c+=k*f[j];g+=k*f[j++/3+3*(i/3)];q+=5*f[k-1];}}return (r==z&&c==z&&g==z&&q==z)?0:1;}

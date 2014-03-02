@@ -45,17 +45,17 @@ class SS_min {
 				solver.s(valid_sample),
 				solver.s(invalid_sample),
 				solver.s(edge_sample)};
-		int[] K = new int[] {
-				solver.k(puzzle),
-				solver.k(valid_sample),
-				solver.k(invalid_sample),
-				solver.k(edge_sample)};
+		boolean[] K = new boolean[] {
+				solver.p(puzzle),
+				solver.p(valid_sample),
+				solver.p(invalid_sample),
+				solver.p(edge_sample)};
 
 		for (int i = 0; i<4; i++) {
 			System.out.println(S[i] + "," + K[i]);
 		}
 
-		System.exit(K[0]);
+		System.exit(S[0]);
 	}
 
 	int s(int[][] s) {
@@ -120,5 +120,23 @@ class SS_min {
 int x(int[][] s){int i=0,j,k=1;long[] f=new long[9];long r=0L,c,g,z=45L,q;for(c=q=g=r,f[0]=1L;k<9;){f[k]=f[k-1]*49;z+=f[k++]*45;}for(;i<9;i++){for(j=0;j<9;){k=s[i][j];r+=k*f[i];c+=k*f[j];g+=k*f[j++/3+3*(i/3)];q+=5*f[k-1];}}return (r==z&&c==z&&g==z&&q==z)?0:1;}
 
 int z(int[][] s){int i=0,j;int[][] z=new int[4][9];for(;i<9;i++)for(j=0;j<4;)z[j++][i]=45;for(i=0;i<9;i++){for(j=0;j<9;){z[0][i]-=s[i][j];z[1][j]-=s[i][j];z[2][i/3+3*(j/3)]-=s[i][j];z[3][s[i][j++]-1]-=5;}}for(i=0;i<9;i++)for(j=0;j<4;j++)if(z[j][i]>0)return 1;return 0;} 
+
+boolean p(int[][] a){
+    int x=0, y, j;
+    int[] u=new int[27];
+    for(;x<9;x++)
+        for(y=0;y<9;y++){
+            j=1<<a[x][y];
+            u[x]|=j;
+            u[y+9]|=j;
+            u[x/3%3+y/3*3+18]|=j;
+        }
+
+    for(x=0,y=1022;x<27;x++)
+        y&=u[x];
+
+    return y==1022;
+}
+
 }
 
